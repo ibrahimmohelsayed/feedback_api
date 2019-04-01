@@ -29,7 +29,6 @@ class FeedbacksController < ApplicationController
   end
 
   def count
-    byebug
     @feeback_count = Feedback.where(company_token: params[:company_token]).count
     render json: @feeback_count
   end
