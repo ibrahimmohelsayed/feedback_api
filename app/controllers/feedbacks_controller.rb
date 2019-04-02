@@ -9,7 +9,6 @@ class FeedbacksController < ApplicationController
   end
 
   def show
-    Feedback.find_by!(company_token: params[:company_token], number: params[:number])
     if @feedback.present?
       render json: @feedback
     else

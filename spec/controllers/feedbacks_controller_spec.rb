@@ -1,26 +1,37 @@
 require 'rails_helper'
 
 RSpec.describe FeedbacksController, type: :controller do
-
+  let!(:feedback){create(:feedback)}
+  let!(:params) do {
+    company_token: '2314124',
+    priority: "minor",
+    state:{
+     device:"LG G4", 
+     os: "Android 6.0",
+     memory: 2048, 
+     storage: 4096,
+    }
+ 
+   }
+  end
   describe "GET #index" do
     it "returns http success" do
-      get :index
+      get :index, params: {company_token: feedback.company_token }
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET #show" do
+  describe "POST #create" do
     it "returns http success" do
-      get :show
+      post :create, params: params
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET #create" do
-    it "returns http success" do
-      get :create
+  describe 'Get #show' do
+    it 'returns http success 'do 
+      get :show, params: {number: feedback.number, company_token: feedback.company_token }
       expect(response).to have_http_status(:success)
     end
   end
-
 end
