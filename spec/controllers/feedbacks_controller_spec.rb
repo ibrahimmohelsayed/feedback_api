@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe FeedbackController, type: :controller do
+RSpec.describe FeedbacksController, type: :controller do
 
   describe "GET #index" do
     it "returns http success" do
