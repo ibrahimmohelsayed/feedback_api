@@ -17,11 +17,12 @@ class FeedbacksController < ApplicationController
   end
 
   def create
-    @feedback = Feedback.create(feedback_params)
-    @feedback.state = State.create(state_params)
+    @feedback = Feedback.new(feedback_params)
+    @feedback.state = State.new(state_params)
     if @feedback.valid?
-      #@feedback.number = $redis.incr("#{@feedback.company_token}_feedbacks_count")
-      render json: { number: @feedback }, status: :created
+      @feedback.number = $redis.incr("#{@feedback.company_token}_feedbacks_count")
+      #here i will release sidikqu job 
+      render json: { number: @feedback.number }, status: :created
     else
       render json: @feedback.errors, status: :unprocessable_entity
     end
