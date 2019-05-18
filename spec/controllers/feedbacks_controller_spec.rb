@@ -5,6 +5,7 @@ RSpec.describe FeedbacksController, type: :controller do
   let!(:params) do {
     company_token: '2314124',
     priority: "minor",
+    number: 1,
     state:{
      device:"LG G4", 
      os: "Android 6.0",
