@@ -21,7 +21,7 @@ class FeedbacksController < ApplicationController
     @feedback.state = State.new(state_params)
     if @feedback.valid?
       @feedback.number = $redis.incr("#{@feedback.company_token}_feedbacks_count")
-      #here i will release sidikqu job 
+      FeedbackCreatorWorker.perform_async(feedback_creation_params,state_params)
       render json: { number: @feedback.number }, status: :created
     else
       render json: @feedback.errors, status: :unprocessable_entity
@@ -32,14 +32,16 @@ class FeedbacksController < ApplicationController
     @feeback_count = Feedback.where(company_token: params[:company_token]).count
     render json: @feeback_count
   end
-  
 
   private 
 
   def set_feedback
     @feedback = Feedback.find_by!(company_token: params[:company_token], number: params[:number])
   end
-  
+
+  def feedback_creation_params
+    feedback_params.merge(number: @feedback.number)
+  end
 
   def feedback_params
     params.permit(:company_token, :number, :priority )
@@ -48,5 +50,4 @@ class FeedbacksController < ApplicationController
   def state_params
     params.require(:state).permit(:device, :os, :memory, :storage)
   end
-
 end

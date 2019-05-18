@@ -11,7 +11,6 @@ RSpec.describe FeedbacksController, type: :controller do
      memory: 2048, 
      storage: 4096,
     }
- 
    }
   end
   describe "GET #index" do

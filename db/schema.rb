@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2019_03_31_202549) do
 
-  create_table "feedbacks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "feedbacks", force: :cascade do |t|
     t.string "company_token"
     t.integer "number"
     t.integer "priority"
@@ -21,7 +24,7 @@ ActiveRecord::Schema.define(version: 2019_03_31_202549) do
     t.index ["company_token", "number"], name: "index_feedbacks_on_company_token_and_number", unique: true
   end
 
-  create_table "states", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "states", force: :cascade do |t|
     t.string "device"
     t.string "os"
     t.integer "memory"
