@@ -32,7 +32,6 @@ class FeedbacksController < ApplicationController
     @feeback_count = Feedback.where(company_token: params[:company_token]).count
     render json: @feeback_count
   end
-  
 
   private 
 
@@ -51,5 +50,4 @@ class FeedbacksController < ApplicationController
   def state_params
     params.require(:state).permit(:device, :os, :memory, :storage)
   end
-
 end

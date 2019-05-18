@@ -42,7 +42,6 @@
         1,
         null,
         null,
-        null,
         1,
         null,
         1,
@@ -59,7 +58,6 @@
         null,
         1,
         2,
-        null,
         null,
         null
       ],
@@ -71,6 +69,7 @@
         1,
         1,
         1,
+        null,
         null
       ],
       "/Users/ibrahimmohamed/Downloads/feedback_api/app/models/application_record.rb": [
@@ -88,14 +87,13 @@
         1,
         1,
         1,
-        null,
-        1,
+        0,
         0,
         0,
         null,
         null
       ]
     },
-    "timestamp": 1558139992
+    "timestamp": 1558141498
   }
 }

@@ -1,10 +1,9 @@
-class FeedbackCreatorWorker 
-  byebug
+class FeedbackCreatorWorker
   include Sidekiq::Worker
   sidekiq_options retry: false
-
+  
   def perform(feedback_params, state_params)
-    @feedback = Feedback.create(feedback_params)
-    @feedback.state.create(state_params) 
+    @feedback = Feedback.create!(eval(feedback_params))
+    @feedback.create_state!(eval(state_params))
   end
 end
