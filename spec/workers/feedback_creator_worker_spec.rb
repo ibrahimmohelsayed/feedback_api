@@ -20,4 +20,7 @@ RSpec.describe FeedbackCreatorWorker  do
       )
     }.to change(FeedbackCreatorWorker.jobs, :size).by(1)
   end
+  it "Should return success" do
+    expect(FeedbackCreatorWorker.perform_async(params.except(:state), params[:state])).to  be_truthy
+  end
 end
