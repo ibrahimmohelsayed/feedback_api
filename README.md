@@ -1,24 +1,9 @@
-# README
+***this a hard way practice***
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a practice project for applying every thing i have learned in rails in this project in the best way 
+I will do every thing from oraginsing code,  TDD, Test Coverage  Rubocop, 
 
-Things you may want to cover:
+etc 
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
