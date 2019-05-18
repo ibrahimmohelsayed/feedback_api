@@ -15,6 +15,7 @@ gem 'puma', '~> 3.11'
 gem 'redis', '~> 4.0'
 gem 'redis-namespace'
 gem 'awesome_print'
+gem 'pg'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

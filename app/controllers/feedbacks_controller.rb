@@ -41,10 +41,8 @@ class FeedbacksController < ApplicationController
   end
 
   def feedback_creation_params
-    feedback_params.merge(@feedback.number)
+    feedback_params.merge(number: @feedback.number)
   end
-  
-  
 
   def feedback_params
     params.permit(:company_token, :number, :priority )
