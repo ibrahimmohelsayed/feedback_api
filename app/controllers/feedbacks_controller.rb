@@ -1,5 +1,4 @@
 class FeedbacksController < ApplicationController
-  before_action :set_feedback, only: %i[show]
   
   def index
     @feedbacks = Feedback.where(company_token: params[:company_token])
@@ -9,11 +8,10 @@ class FeedbacksController < ApplicationController
   end
 
   def show
-    if @feedback.present?
-      render json: @feedback
-    else
-      render json: @feedback.errors, status: :not_found
-    end
+    @feedback = Feedback.find_by!(company_token: params[:company_token], number: params[:number])
+      render json: @feedback, status: :ok
+  rescue ActiveRecord::RecordNotFound => e
+    render json: { id: "Could not find" }, status: :not_found
   end
 
   def create
@@ -34,10 +32,6 @@ class FeedbacksController < ApplicationController
   end
 
   private 
-
-  def set_feedback
-    @feedback = Feedback.find_by!(company_token: params[:company_token], number: params[:number])
-  end
 
   def feedback_creation_params
     feedback_params.merge(number: @feedback.number)
