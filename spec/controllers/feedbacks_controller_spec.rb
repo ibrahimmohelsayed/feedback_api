@@ -22,12 +22,7 @@ RSpec.describe FeedbacksController, type: :controller do
     it "returns count of response" do
       get :index, params: {company_token: feedback.company_token }
       expect(JSON.parse(response.body).count).to eq(1)
-    end
-    it "return error" do
-      get :index, params: {company_token: feedback.company_token }
-      expect(response).to have_http_status(:bad_request)
-    end
-    
+    end    
   end
 
   describe "POST #create" do

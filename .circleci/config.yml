@@ -1,0 +1,12 @@
+version: 2
+jobs:
+    build:
+        working_directory: feedback_api
+    docker:
+            - image: circleci/ruby:2.5.1
+            environment:
+                RAILS_ENV: test
+    steps:
+        - checkout
+
+        
