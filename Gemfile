@@ -28,6 +28,7 @@ gem 'pg'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'sidekiq'
+gem 'graphql'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
@@ -40,6 +41,9 @@ group :development, :test do
   gem 'faker'
   gem 'database_cleaner'
   gem 'simplecov', require: false
+  gem 'pry'
+  gem 'rspec-graphql_matchers'
+  gem 'graphiql-rails'
 end
 
 group :development do
